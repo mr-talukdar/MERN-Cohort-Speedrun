@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
+    <script>
+      const SignIn = async () => {
+        const uid = document.querySelector("#signin-email").value;
+        const pwd = document.querySelector("#signin-password").value;
+        const dataField = document.querySelector("#user-detail");
+      };
+
+      const SignUp = async () => {
+        const uid = document.querySelector("#signup-email").value;
+        const pwd = document.querySelector("#signup-password").value;
+        const dataField = document.querySelector("#user-detail");
+        const response = await axios.post("http://localhost:3000/signup", {
+          uid,
+          pwd,
+        });
+        dataField.textContent = response.data;
+        alert(response.data);
+      };
+    </script>
+  </head>
+  <body>
+    <div id="main-container">
+      <div>Welcome, please sign in or sign up!</div>
+      <div id="signin-container">
+        <div>Sign In</div>
+        <div
+          id="signin-input-container"
+          style="display: flex; flex-direction: row">
+          <input placeholder="Enter your email" />
+          <input placeholder="Enter your password" />
+          <button
+            onclick="
+              {
+                SignIn();
+              }
+            ">
+            Submit
+          </button>
+        </div>
+      </div>
+      <div id="signup-container">
+        <div>Sign Up</div>
+        <div
+          id="signup-input-container"
+          style="display: flex; flex-direction: row">
+          <input id="signup-email" placeholder="Enter your email" />
+          <input id="signup-password" placeholder="Enter your password" />
+          <button
+            onclick="
+              {
+                SignUp();
+              }
+            ">
+            Submit
+          </button>
+        </div>
+      </div>
+      <div id="Detail-container">
+        <div>User Detail</div>
+        <div id="user-detail"></div>
+      </div>
+    </div>
+  </body>
+</html>

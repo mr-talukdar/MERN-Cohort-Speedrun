@@ -1,6 +1,6 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
-
+const path = require("path");
 const users = [
   {
     username: "abcd@example.com",
@@ -35,8 +35,7 @@ const app = express();
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Hi");
-  console.log("Hey from /");
+  res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
 app.post("/signup", (req, res) => {
